@@ -13,6 +13,7 @@ const Dark: FC<{}> = () => {
       media.addEventListener('change', callback);
     }
     media?.matches ? changeDark() : removeDark();
+    document.body.setAttribute('data-prefers-color-init', 'true');
   }, []);
 
   const changeDark = () => {
