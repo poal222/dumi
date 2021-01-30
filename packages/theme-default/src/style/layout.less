@@ -10,10 +10,7 @@ body {
     Segoe UI Symbol;
   font-variant: tabular-nums;
   font-feature-settings: 'tnum';
-
-  &[data-prefers-color-init="true"] {
-    transition: background 0.2s cubic-bezier(0.075,0.82,0.165,1), color 0.2s cubic-bezier(0.075,0.82,0.165,1);
-  }
+  transition: background 0.2s cubic-bezier(0.075,0.82,0.165,1), color 0.2s cubic-bezier(0.075,0.82,0.165,1);
 
   .dark & {
     color: @c-text-dark;
@@ -272,7 +269,7 @@ body {
         text-decoration: none;
 
         .dark & {
-          color: @c-text-dark;
+          color: @c-secondary-dark;
         }
 
         &::before {
@@ -284,6 +281,10 @@ body {
           display: inline-block;
           width: 2px;
           background: @c-border;
+
+          .dark & {
+            background: @c-border-dark;
+          }
         }
 
         &:hover {

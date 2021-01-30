@@ -18,6 +18,7 @@ export interface IOuterLayoutProps {
   locales: IThemeContext['config']['locales'];
   algolia: IThemeContext['config']['algolia'];
   routes: IThemeContext['routes'];
+  dark: IThemeContext['config']['dark'];
 }
 
 /**
@@ -144,7 +145,7 @@ const findDumiRoot = (routes: any): IThemeContext['routes'] => {
  * outer theme layout
  */
 const OuterLayout: React.FC<IOuterLayoutProps & IRouteComponentProps> = props => {
-  const { location, route, children } = props;
+  const { location, route, children, dark } = props;
   const pathWithoutPrefix = location.pathname.replace(
     // to avoid stripped the first /
     route.path.replace(/^\/$/, '//'),

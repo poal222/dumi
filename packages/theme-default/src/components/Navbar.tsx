@@ -14,7 +14,7 @@ interface INavbarProps {
 const Navbar: FC<INavbarProps> = ({ onMobileMenuClick, navPrefix, location }) => {
   const {
     base,
-    config: { mode, title, logo },
+    config: { mode, title, logo, dark },
     nav: navItems,
   } = useContext(context);
 
@@ -61,7 +61,7 @@ const Navbar: FC<INavbarProps> = ({ onMobileMenuClick, navPrefix, location }) =>
           );
         })}
         <LocaleSelect location={location} />
-        <Dark />
+        {dark && <Dark dark={dark}/>}
       </nav>
     </div>
   );

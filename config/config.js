@@ -26,16 +26,7 @@ export default {
       },
     ],
   ],
-  headScripts: [
-    `
-    const html = document.documentElement;
-    const media = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (media && media.matches) {
-      html.classList.add('dark');
-    }
-    `
-  ],
+  dark: 'auto',
   scripts: ['https://v1.cnzz.com/z_stat.php?id=1278653578&web_id=1278653578'],
   analytics: {
     ga: 'UA-128069695-2',

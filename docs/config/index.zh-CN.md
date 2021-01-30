@@ -41,6 +41,14 @@ export default {
 }
 ```
 
+### dark
+
+- 类型：`Boolean | String`
+- 默认值：`false`
+- 详细：
+
+是否开启暗黑主题。当设置成 `auto` 时，网站主题会随当前系统主题配色变动。
+
 ### description
 
 - 类型：`String`

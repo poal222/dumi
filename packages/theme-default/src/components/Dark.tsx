@@ -1,19 +1,25 @@
 import type { FC } from 'react';
-import React from 'react';
+import React, { useContext } from 'react';
+import { context } from 'dumi/theme';
 import './Dark.less';
 
 const Dark: FC<{}> = () => {
+  const {
+    config: {
+      dark
+    }
+  } = useContext(context);
+
   const callback = (e) => {
     e.matches ? changeDark() : removeDark();
   };
 
   React.useEffect(() => {
     const media = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
-    if (media && typeof media.addEventListener === 'function') {
+    if (dark === 'auto' && media && typeof media.addEventListener === 'function') {
       media.addEventListener('change', callback);
     }
     media?.matches ? changeDark() : removeDark();
-    document.body.setAttribute('data-prefers-color-init', 'true');
   }, []);
 
   const changeDark = () => {

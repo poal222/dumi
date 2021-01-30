@@ -32,6 +32,7 @@ export default (api: IApi) => {
       },
       algolia: ctx.opts.algolia,
       theme: ctx.opts.theme,
+      dark: ctx.opts.dark,
     };
 
     api.writeTmpFile({

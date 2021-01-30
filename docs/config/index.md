@@ -41,6 +41,14 @@ Example：
 }
 ```
 
+### dark
+
+- Type: `Boolean | String`
+- Default: `false`
+- Details:
+
+Whether to open the dark theme. When set `auto`, the website theme will follow your system settings.
+
 ### description
 
 - Type: `String`

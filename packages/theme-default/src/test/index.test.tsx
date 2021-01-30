@@ -44,6 +44,7 @@ describe('default theme', () => {
       navs: {},
       title: 'test',
       logo: '/',
+      dark: true,
       mode: 'site' as 'doc' | 'site',
       repository: { branch: 'mater' },
     },

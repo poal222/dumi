@@ -18,6 +18,7 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location }) => {
       title,
       description,
       mode,
+      dark,
       repository: { url: repoUrl },
     },
     menu,
@@ -85,13 +86,13 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location }) => {
             </ul>
             {/* site mode locale select */}
             <LocaleSelect location={location} />
-            <Dark />
+            {dark && <Dark />}
           </div>
         ) : (
           <div className="__dumi-default-menu-doc-locale">
             {/* doc mode locale select */}
             <LocaleSelect location={location} />
-            <Dark />
+            {dark && <Dark />}
           </div>
         )}
         {/* menu list */}
