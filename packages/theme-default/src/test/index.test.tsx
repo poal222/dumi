@@ -44,6 +44,64 @@ describe('default theme', () => {
       navs: {},
       title: 'test',
       logo: '/',
+      mode: 'site' as 'doc' | 'site',
+      repository: { branch: 'mater' },
+    },
+    meta: {},
+    menu: [
+      {
+        title: '分组',
+        children: [
+          {
+            title: 'English',
+            path: '/en',
+          },
+        ],
+      },
+    ],
+    nav: [
+      {
+        path: '/',
+        title: '首页',
+        children: [],
+      },
+      {
+        title: '生态',
+        children: [
+          {
+            path: 'https://d.umijs.org',
+            title: 'GitHub',
+            children: [],
+          },
+        ],
+      },
+    ],
+    base: '/',
+  };
+  const darkCtx = {
+    title: 'test',
+    locale: 'zh-CN',
+    routes: [
+      {
+        path: '/',
+        title: '首页',
+        meta: {},
+      },
+      {
+        path: '/en-US',
+        title: 'Home',
+        meta: {},
+      },
+    ],
+    config: {
+      locales: [
+        { name: 'zh-CN', label: '中文' },
+        { name: 'en-US', label: 'English' },
+      ],
+      menus: {},
+      navs: {},
+      title: 'test',
+      logo: '/',
       dark: true,
       mode: 'site' as 'doc' | 'site',
       repository: { branch: 'mater' },
@@ -131,11 +189,7 @@ describe('default theme', () => {
     expect(getByText('Feat2')).not.toBeNull();
 
     // dark check
-    queryAllByAttribute('class', container, '__dumi-default-dark-moon')[0].click();
-    expect(document.documentElement.className).toEqual('dark');
-
-    queryAllByAttribute('class', container, '__dumi-default-dark-sun')[0].click();
-    expect(document.documentElement.className).toEqual('');
+    expect(queryAllByAttribute('class', container, '__dumi-default-dark').length).toEqual(0);
 
     // trigger mobile menu display
     queryByAttribute('class', container, '__dumi-default-navbar-toggle').click();
@@ -149,7 +203,7 @@ describe('default theme', () => {
     const wrapper = ({ children }) => (
       <Context.Provider
         value={{
-          ...baseCtx,
+          ...darkCtx,
           meta: {
             title: 'test',
             slugs: [{ value: 'Slug A', heading: 'a', depth: 2 }],
@@ -161,7 +215,7 @@ describe('default theme', () => {
         {children}
       </Context.Provider>
     );
-    const { getByText, getAllByText } = render(
+    const { container, getByText, getAllByText } = render(
       <Router history={history}>
         <Layout {...baseProps}>
           <h1>Doc</h1>
@@ -169,6 +223,13 @@ describe('default theme', () => {
       </Router>,
       { wrapper },
     );
+
+    // dark check
+    queryAllByAttribute('class', container, '__dumi-default-dark-moon')[0].click();
+    expect(document.documentElement.className).toEqual('dark');
+
+    queryAllByAttribute('class', container, '__dumi-default-dark-sun')[0].click();
+    expect(document.documentElement.className).toEqual('');
 
     // expect slugs be rendered
     expect(getByText('Slug A')).not.toBeNull();
